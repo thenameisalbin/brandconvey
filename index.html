@@ -16,260 +16,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--indigo:#2E2270;--indigo-deep:#1E1650;--indigo-mid:#3A2C8C;--yellow:#F4C430;--offwhite:#F7F4EC;--lavender:#B6ACDE;--ink:#211A3D;--ink-soft:#5B5478;--rule:rgba(46,34,112,0.12);--white:#ffffff;--r-card:16px;--r-pill:100px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--offwhite);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.015em}
-a{color:inherit}
-img,video{max-width:100%;display:block}
-button{cursor:pointer;border:none;background:none;font:inherit}
-.wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px)}
-.section{padding:clamp(56px,8vw,96px) 0}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--r-pill);font-weight:600;font-size:14px;text-decoration:none;transition:background .2s,color .2s,transform .15s,border-color .2s;white-space:nowrap;line-height:1}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--indigo);color:var(--offwhite)}
-.btn-primary:hover{background:var(--indigo-mid)}
-.btn-outline{border:1.5px solid var(--indigo);color:var(--indigo)}
-.btn-outline:hover{background:var(--indigo);color:var(--offwhite)}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
-.eyebrow::before{content:"●";color:var(--yellow);font-size:7px;flex-shrink:0}
-.section-eyebrow{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;color:var(--indigo);opacity:.55;margin-bottom:10px}
-.section-head{margin-bottom:clamp(28px,4vw,52px);max-width:640px}
-.section-head h2{font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.15}
-.section-head p{margin-top:12px;color:var(--ink-soft);font-size:clamp(14px,1.6vw,15.5px);line-height:1.7}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:rgba(247,244,236,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,34,112,.08)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:13px;padding-bottom:13px;min-height:64px}
-.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;color:var(--ink)}
-.nav-logo-img{height:36px;width:auto;display:block;border-radius:7px;flex-shrink:0}
-.nav-logo-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(14px,1.6vw,18px);letter-spacing:-.02em;white-space:nowrap;color:var(--ink)}
-.nav-links{display:flex;gap:clamp(14px,2.2vw,32px);font-size:14px;font-weight:500;background:transparent!important;border:none!important;box-shadow:none!important;padding:0;margin:0}
-.nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .2s;background:transparent!important;border:none;padding:4px 0}
-.nav-links a:hover{color:var(--indigo)}
-.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.nav-socials{display:flex;gap:6px}
-.nav-socials a{width:32px;height:32px;border-radius:50%;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;color:var(--indigo);transition:background .2s,color .2s;flex-shrink:0}
-.nav-socials a:hover{background:var(--indigo);color:var(--offwhite)}
-.nav-cta-sm{display:none;background:var(--indigo);color:var(--offwhite);font-size:12px;font-weight:600;padding:8px 14px;border-radius:var(--r-pill);text-decoration:none;white-space:nowrap;transition:background .2s}
-.nav-cta-sm:hover{background:var(--indigo-mid)}
-.nav-ham{display:none;flex-direction:column;gap:5px;width:38px;height:38px;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--rule);flex-shrink:0}
-.nav-ham span{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
-.nav-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.nav-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:199;background:var(--offwhite);flex-direction:column;padding:100px clamp(20px,5vw,48px) 40px;overflow-y:auto}
-.mob-menu.open{display:flex}
-.mob-menu a{display:block;padding:18px 0;font-size:clamp(22px,6vw,32px);font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);letter-spacing:-.02em;transition:color .2s}
-.mob-menu a:hover{color:var(--indigo)}
-.mob-menu .mob-cta{margin-top:28px;display:block;background:var(--indigo);color:var(--offwhite)!important;text-align:center;border-radius:var(--r-pill);padding:18px;font-size:16px;border-bottom:none!important}
-.mob-menu-socials{margin-top:32px;display:flex;gap:14px}
-.mob-menu-socials a{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule)!important;display:flex;align-items:center;justify-content:center;padding:0;font-size:0;transition:background .2s,border-color .2s!important}
-.mob-menu-socials a:hover{background:var(--indigo);border-color:var(--indigo)!important;color:var(--offwhite)}
-@media(max-width:1024px){.nav-socials{display:none}}
-@media(max-width:768px){.nav-links{display:none}.nav-cta-sm{display:inline-flex}}
-@media(max-width:520px){.nav-cta-sm{display:none}.nav-ham{display:flex}}
-@media(max-width:360px){.nav-logo-text{display:none}}
-
-/* HERO */
-.hero{background:var(--indigo);color:var(--offwhite);position:relative;overflow:hidden;padding:clamp(64px,9vw,120px) 0 clamp(56px,8vw,100px)}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 65% 65% at 88% 12%,rgba(244,196,48,.18),transparent),radial-gradient(ellipse 55% 55% at 4% 92%,rgba(182,172,222,.2),transparent)}
-.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:start}
-.hero-eyebrow{color:var(--lavender)}
-.hero-eyebrow::before{color:var(--yellow)}
-.hero h1{font-size:clamp(32px,5vw,66px);font-weight:700;line-height:1.06}
-.hero h1 em{font-style:normal;color:var(--yellow)}
-.hero-lead{margin-top:18px;font-size:clamp(14px,1.7vw,16.5px);color:rgba(247,244,236,.76);line-height:1.7;max-width:520px}
-.hero-actions{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap}
-.hero-actions .btn-primary{background:var(--yellow);color:var(--indigo-deep);font-weight:700}
-.hero-actions .btn-primary:hover{background:#e8b820}
-.hero-actions .btn-outline{border-color:rgba(247,244,236,.45);color:var(--offwhite)}
-.hero-actions .btn-outline:hover{background:rgba(247,244,236,.12);border-color:rgba(247,244,236,.45);color:var(--offwhite)}
-.hero-status{margin-top:22px;display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(247,244,236,.2);border-radius:var(--r-pill);padding:7px 15px 7px 11px;font-size:11.5px;font-weight:500;color:rgba(247,244,236,.65);max-width:100%;flex-wrap:nowrap;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:var(--yellow);box-shadow:0 0 0 4px rgba(244,196,48,.18);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-right{display:flex;flex-direction:column;gap:14px}
-.h-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:16px;padding:clamp(20px,2.5vw,28px) clamp(20px,2.5vw,30px);backdrop-filter:blur(8px)}
-.h-card-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--lavender);font-weight:700;margin-bottom:14px}
-.h-tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.8vw,21px);font-weight:600;line-height:1.45;color:var(--offwhite)}
-.h-tagline em{font-style:normal;color:var(--yellow)}
-.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
-.hero-tags span{font-size:12px;padding:6px 14px;border-radius:var(--r-pill);border:1px solid rgba(255,255,255,.18);color:rgba(247,244,236,.88);transition:background .2s,border-color .2s}
-.hero-tags span:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.35)}
-@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-right{display:none}.hero-lead{max-width:100%}}
-@media(max-width:480px){.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{justify-content:center}.hero-status{font-size:11px;white-space:normal}}
-
-/* RAIL */
-.rail{height:20px;background:var(--indigo-deep);display:flex;align-items:center;overflow:hidden}
-.rail-track{display:flex;gap:24px;animation:railmove 12s linear infinite;white-space:nowrap}
-.rail-track span{width:8px;height:8px;border-radius:2px;background:var(--yellow);opacity:.4;flex-shrink:0}
-@keyframes railmove{from{transform:translateX(0)}to{transform:translateX(-240px)}}
-
-/* WORK */
-.work-section{background:var(--offwhite)}
-.filmstrip{display:flex;gap:16px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;cursor:grab;margin-left:calc(-1 * clamp(16px,4vw,48px));margin-right:calc(-1 * clamp(16px,4vw,48px));padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px);-webkit-overflow-scrolling:touch;touch-action:pan-x}
-.filmstrip:active{cursor:grabbing}
-.filmstrip::-webkit-scrollbar{height:4px}
-.filmstrip::-webkit-scrollbar-thumb{background:var(--lavender);border-radius:10px}
-
-/* Card — white bg, info sits on white, no dark bleed */
-.work-card{flex:0 0 clamp(220px,72vw,280px);scroll-snap-align:start;background:var(--white);border:1px solid var(--rule);border-radius:var(--r-card);overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column}
-@media(min-width:600px){.work-card{flex:0 0 clamp(240px,42vw,280px)}}
-@media(min-width:900px){.work-card{flex:0 0 280px}}
-@media(min-width:1100px){.work-card{flex:0 0 290px}}
-.work-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(46,34,112,.15)}
-
-/* Thumb — fixed height so photo always fills, no aspect-ratio gaps */
-.work-thumb{position:relative;height:340px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
-@media(min-width:600px){.work-thumb{height:360px}}
-@media(min-width:900px){.work-thumb{height:340px}}
-
-/* Film sprocket holes */
-.work-thumb::before,.work-thumb::after{content:"";position:absolute;left:0;right:0;height:18px;z-index:4;pointer-events:none;background-image:repeating-linear-gradient(90deg,transparent 0,transparent 5px,rgba(0,0,0,.6) 5px,rgba(0,0,0,.6) 12px);background-size:18px 100%}
-.work-thumb::before{top:0}
-.work-thumb::after{bottom:0}
-
-/* Photo — img tag for guaranteed cover fill */
-.work-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;z-index:0}
-
-/* Grain overlay */
-.work-thumb-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.15;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
-
-/* Vignette */
-.work-thumb-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,transparent 30%,transparent 55%,rgba(0,0,0,.65) 100%)}
-
-/* Play button */
-.play-btn{position:relative;z-index:3;width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;transition:transform .25s,background .25s,border-color .25s}
-.play-btn-arrow{width:0;height:0;margin-left:4px;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid rgba(255,255,255,.95);transition:border-left-color .25s}
-.work-card:hover .play-btn{transform:scale(1.1);background:var(--yellow);border-color:var(--yellow)}
-.work-card:hover .play-btn-arrow{border-left-color:var(--indigo-deep)}
-
-/* Tag */
-.work-tag{position:absolute;top:24px;left:12px;z-index:5;font-size:10px;font-weight:600;letter-spacing:.04em;background:rgba(0,0,0,.5);color:#fff;padding:5px 11px;border-radius:var(--r-pill)}
-
-/* Bottom labels */
-.work-num{position:absolute;bottom:26px;left:14px;z-index:5;font-family:'Space Grotesk',sans-serif;font-size:11px;opacity:.75;letter-spacing:.08em;color:#fff}
-.yt-badge{position:absolute;bottom:22px;right:10px;z-index:5;display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.5);border-radius:6px;padding:4px 8px}
-.yt-badge svg{flex-shrink:0}
-.yt-badge span{font-size:9px;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.9);text-transform:uppercase}
-
-/* Card info — always white, flex-grow fills remainder */
-.work-info{padding:16px 16px 18px;background:var(--white);flex:1}
-.work-client{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft)}
-.work-info h3{font-size:clamp(13.5px,1.5vw,15px);margin-top:4px;font-weight:600;line-height:1.3;color:var(--ink)}
-.work-info p{font-size:12.5px;color:var(--ink-soft);margin-top:4px;line-height:1.55}
-
-/* Upcoming card */
-.work-upcoming{flex:0 0 clamp(160px,50vw,220px);scroll-snap-align:start;background:transparent;border:1.5px dashed var(--lavender);border-radius:var(--r-card);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:300px}
-@media(min-width:600px){.work-upcoming{flex:0 0 200px}}
-.plus-ring{width:44px;height:44px;border-radius:50%;border:1.5px dashed rgba(46,34,112,.4);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--indigo);margin-bottom:14px}
-.work-upcoming h3{font-size:14px;color:var(--indigo);font-weight:600}
-.work-upcoming p{font-size:12px;color:var(--ink-soft);margin-top:8px}
-
-/* TICKER */
-.ticker{background:var(--yellow);overflow:hidden;padding:13px 0}
-.ticker-track{display:flex;white-space:nowrap;animation:tick 26s linear infinite}
-.t-item{display:inline-flex;align-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(12px,1.4vw,14px);color:var(--indigo-deep);padding:0 22px}
-.t-item::after{content:"·";padding-left:22px;opacity:.35}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* SERVICES */
-.services-section{background:var(--white)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);border-radius:var(--r-card);overflow:hidden;background:var(--rule);gap:1px}
-.svc-cell{background:var(--white);padding:clamp(20px,3vw,34px) clamp(16px,2.5vw,28px);transition:background .2s}
-.svc-cell:hover{background:var(--offwhite)}
-.svc-idx{font-size:11px;color:var(--yellow);font-weight:700;font-family:'Space Grotesk',sans-serif;letter-spacing:.05em}
-.svc-cell h3{font-size:clamp(14px,1.8vw,17px);margin-top:12px;font-weight:600}
-.svc-cell p{font-size:13px;color:var(--ink-soft);margin-top:7px;line-height:1.6}
-@media(max-width:860px){.services-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.services-grid{grid-template-columns:1fr}}
-
-/* PROCESS */
-.process-section{background:var(--offwhite)}
-.process-list{display:flex;flex-direction:column}
-.process-step{display:grid;grid-template-columns:64px 1fr;padding:clamp(20px,3vw,36px) 0;border-top:1px solid var(--rule);align-items:start}
-.process-step:last-child{border-bottom:1px solid var(--rule)}
-.proc-n{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;color:rgba(46,34,112,.1);line-height:1;padding-top:4px}
-.proc-body h3{font-size:clamp(15px,1.9vw,19px);font-weight:600}
-.proc-body p{font-size:14px;color:var(--ink-soft);margin-top:7px;line-height:1.65}
-@media(max-width:400px){.process-step{grid-template-columns:48px 1fr}}
-
-/* TEAM */
-.team-section{background:var(--indigo);color:var(--offwhite)}
-.team-section .section-eyebrow{color:var(--lavender);opacity:1}
-.team-section .section-head h2{color:var(--offwhite)}
-.team-section .section-head p{color:rgba(247,244,236,.65)}
-.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.5vw,28px)}
-.team-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:clamp(22px,3vw,34px);transition:background .2s}
-.team-card:hover{background:rgba(255,255,255,.09)}
-.avatar-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2);margin-bottom:16px;display:block}
-.avatar-fallback{width:68px;height:68px;border-radius:50%;flex-shrink:0;background:var(--lavender);display:none;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--indigo-deep);font-size:18px;margin-bottom:16px}
-.avatar-photo.broken{display:none}
-.avatar-photo.broken+.avatar-fallback{display:flex}
-.team-card h3{font-size:clamp(16px,2.2vw,21px);font-weight:700}
-.team-role{font-size:12px;color:var(--yellow);font-weight:600;margin-top:4px;line-height:1.4}
-.team-bio{font-size:13px;color:rgba(247,244,236,.7);margin-top:12px;line-height:1.65}
-.creds{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
-.creds span{font-size:11px;padding:4px 10px;border-radius:var(--r-pill);border:1px solid rgba(255,255,255,.2);color:rgba(247,244,236,.8)}
-.team-socials{margin-top:14px;display:flex;gap:8px}
-.team-socials a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--offwhite);transition:background .2s,border-color .2s}
-.team-socials a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--indigo-deep)}
-@media(max-width:560px){.team-grid{grid-template-columns:1fr}}
-
-/* CONTACT */
-.cta-section{background:var(--offwhite);text-align:center;padding:clamp(60px,10vw,120px) 0}
-.cta-section h2{font-size:clamp(24px,4vw,46px);font-weight:700;max-width:600px;margin:0 auto;line-height:1.12}
-.cta-section>.wrap>p{color:var(--ink-soft);margin-top:14px;font-size:clamp(14px,1.8vw,16px)}
-.cta-btns{margin-top:28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-@media(max-width:380px){.cta-btns{flex-direction:column;align-items:center}.cta-btns .btn{width:100%;max-width:300px;justify-content:center}}
-.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:clamp(40px,6vw,64px) auto 0;text-align:left}
-.contact-card{background:var(--white);border:1px solid var(--rule);border-radius:18px;padding:clamp(20px,2.5vw,30px);display:flex;flex-direction:column;gap:10px;transition:box-shadow .25s,transform .25s}
-.contact-card:hover{box-shadow:0 8px 32px rgba(46,34,112,.09);transform:translateY(-2px)}
-.cc-icon{width:38px;height:38px;border-radius:10px;background:rgba(46,34,112,.07);display:flex;align-items:center;justify-content:center;color:var(--indigo);flex-shrink:0;margin-bottom:2px}
-.cc-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--indigo);opacity:.5}
-.cc-value{display:flex;flex-direction:column;gap:4px}
-.cc-value a{font-size:clamp(12.5px,1.3vw,14px);font-weight:500;text-decoration:none;color:var(--ink);transition:color .2s;word-break:break-all;display:block}
-.cc-value a:hover{color:var(--indigo)}
-.cc-value address{font-style:normal;font-size:clamp(12.5px,1.3vw,14px);font-weight:500;color:var(--ink);line-height:1.65}
-.cc-founder-name{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);opacity:.75}
-@media(max-width:680px){.contact-cards{grid-template-columns:1fr 1fr;gap:12px}}
-@media(max-width:420px){.contact-cards{grid-template-columns:1fr}}
-
-/* FOOTER */
-footer{background:var(--indigo-deep);color:rgba(247,244,236,.52);padding:clamp(22px,4vw,40px) 0;font-size:13px}
-.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.foot-copy{font-size:clamp(11px,1.4vw,13px);flex-shrink:1;min-width:0}
-footer a{text-decoration:none;color:rgba(247,244,236,.8);transition:color .2s}
-footer a:hover{color:var(--yellow)}
-.foot-links{display:flex;gap:clamp(10px,2vw,22px);align-items:center;flex-wrap:wrap;flex-shrink:0}
-@media(max-width:460px){.foot-inner{flex-direction:column;align-items:flex-start;gap:10px}}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.08s}
-.d2{transition-delay:.16s}
-.d3{transition-delay:.24s}
-.d4{transition-delay:.32s}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.rail-track,.ticker-track,.status-dot{animation:none!important}}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <nav id="mainNav">
   <div class="wrap">
     <div class="nav-inner">
-      <a class="nav-logo" href="/">
+      <a class="nav-logo" href="index.html">
         <img class="nav-logo-img" src="logo.jpg" alt="BrandConvey Studios" onerror="this.style.display='none'">
         <span class="nav-logo-text">BrandConvey Studios</span>
       </a>
       <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
       </div>
       <div class="nav-right">
         <div class="nav-socials">
@@ -290,11 +52,11 @@ footer a:hover{color:var(--yellow)}
 </nav>
 
 <div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <a href="#work" onclick="closeMenu()">Work</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#team" onclick="closeMenu()">Team</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="tel:+919072615902" class="mob-cta" onclick="closeMenu()">+91 90726 15902</a>
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="tel:+919072615902" class="mob-cta">+91 90726 15902</a>
   <div class="mob-menu-socials">
     <a href="https://www.instagram.com/brandconveystudios/" target="_blank" rel="noopener" aria-label="Instagram">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -352,12 +114,13 @@ footer a:hover{color:var(--yellow)}
     <div class="section-head reveal">
       <div class="section-eyebrow">Selected Work</div>
       <h2>Four stories, told so far.</h2>
-      <p>A running reel of what we've shot and cut. More lands here as each project wraps.</p>
+      <p>A running reel of what we've shot and cut. Click any card to explore our full services.</p>
     </div>
   </div>
   <div class="wrap">
     <div class="filmstrip reveal" id="filmstrip">
-      <div class="work-card" data-url="https://youtube.com/shorts/q-7ksZK6U8M">
+
+      <div class="work-card">
         <div class="work-thumb">
           <img class="work-thumb-img" src="thumb1.png" alt="Mudbrew Café campaign" style="object-position:center 40%">
           <div class="work-thumb-grain"></div>
@@ -365,16 +128,16 @@ footer a:hover{color:var(--yellow)}
           <span class="work-tag">Campaign</span>
           <div class="play-btn"><div class="play-btn-arrow"></div></div>
           <span class="work-num">01</span>
-          <div class="yt-badge"><svg width="14" height="10" viewBox="0 0 24 17" fill="red"><path d="M23.5 2.7S23.2.9 22.4.2C21.4-.8 20.3-.8 19.8-.8 16.5-1 12 -1 12 -1s-4.5 0-7.8.2C3.7-.6 2.6-.5 1.6.2.8.9.5 2.7.5 2.7S.2 4.8.2 6.9v2c0 2.1.3 4.2.3 4.2s.3 1.8 1.1 2.5c1 1 2.4.9 3 1 2.2.2 9.4.3 9.4.3s4.5 0 7.8-.3c.5-.1 1.6-.1 2.6-1 .8-.7 1.1-2.5 1.1-2.5s.3-2.1.3-4.2v-2C23.8 4.8 23.5 2.7 23.5 2.7zM9.7 11.5V4.9l7 3.3-7 3.3z"/></svg><span>Shorts</span></div>
         </div>
         <div class="work-info">
           <div class="work-client">Mudbrew Café</div>
           <h3>"Be a Child Again" Campaign</h3>
           <p>A nostalgia-driven brand reel and content series for a Kochi café known for pottery and games.</p>
+          <a class="card-link" href="services.html">View details →</a>
         </div>
       </div>
 
-      <div class="work-card" data-url="https://youtube.com/shorts/ICbyJtfG1K8">
+      <div class="work-card">
         <div class="work-thumb">
           <img class="work-thumb-img" src="thumb2.jpg" alt="Nirmala Medical Centre documentary" style="object-position:center center">
           <div class="work-thumb-grain"></div>
@@ -382,16 +145,16 @@ footer a:hover{color:var(--yellow)}
           <span class="work-tag">Documentary</span>
           <div class="play-btn"><div class="play-btn-arrow"></div></div>
           <span class="work-num">02</span>
-          <div class="yt-badge"><svg width="14" height="10" viewBox="0 0 24 17" fill="red"><path d="M23.5 2.7S23.2.9 22.4.2C21.4-.8 20.3-.8 19.8-.8 16.5-1 12 -1 12 -1s-4.5 0-7.8.2C3.7-.6 2.6-.5 1.6.2.8.9.5 2.7.5 2.7S.2 4.8.2 6.9v2c0 2.1.3 4.2.3 4.2s.3 1.8 1.1 2.5c1 1 2.4.9 3 1 2.2.2 9.4.3 9.4.3s4.5 0 7.8-.3c.5-.1 1.6-.1 2.6-1 .8-.7 1.1-2.5 1.1-2.5s.3-2.1.3-4.2v-2C23.8 4.8 23.5 2.7 23.5 2.7zM9.7 11.5V4.9l7 3.3-7 3.3z"/></svg><span>Shorts</span></div>
         </div>
         <div class="work-info">
           <div class="work-client">Nirmala Medical Centre</div>
           <h3>Institutional Documentary</h3>
           <p>A longer-form documentary covering the medical centre's story and facilities.</p>
+          <a class="card-link" href="services.html">View details →</a>
         </div>
       </div>
 
-      <div class="work-card" data-url="https://youtube.com/shorts/cpnyfmEkOy4">
+      <div class="work-card">
         <div class="work-thumb">
           <img class="work-thumb-img" src="thumb3.jpg" alt="Monkey Paw Resort brand video" style="object-position:center 45%">
           <div class="work-thumb-grain"></div>
@@ -399,16 +162,16 @@ footer a:hover{color:var(--yellow)}
           <span class="work-tag">Resort &amp; Travel</span>
           <div class="play-btn"><div class="play-btn-arrow"></div></div>
           <span class="work-num">03</span>
-          <div class="yt-badge"><svg width="14" height="10" viewBox="0 0 24 17" fill="red"><path d="M23.5 2.7S23.2.9 22.4.2C21.4-.8 20.3-.8 19.8-.8 16.5-1 12 -1 12 -1s-4.5 0-7.8.2C3.7-.6 2.6-.5 1.6.2.8.9.5 2.7.5 2.7S.2 4.8.2 6.9v2c0 2.1.3 4.2.3 4.2s.3 1.8 1.1 2.5c1 1 2.4.9 3 1 2.2.2 9.4.3 9.4.3s4.5 0 7.8-.3c.5-.1 1.6-.1 2.6-1 .8-.7 1.1-2.5 1.1-2.5s.3-2.1.3-4.2v-2C23.8 4.8 23.5 2.7 23.5 2.7zM9.7 11.5V4.9l7 3.3-7 3.3z"/></svg><span>Shorts</span></div>
         </div>
         <div class="work-info">
           <div class="work-client">Monkey Paw Resort, Munnar</div>
           <h3>Resort Brand Video</h3>
           <p>A cinematic look at the property and experience, shot on location in Munnar.</p>
+          <a class="card-link" href="services.html">View details →</a>
         </div>
       </div>
 
-      <div class="work-card" data-url="https://youtube.com/shorts/cvxF-9diTFY">
+      <div class="work-card">
         <div class="work-thumb">
           <img class="work-thumb-img" src="thumb4.jpg" alt="Nirmala College welcome film" style="object-position:center 25%">
           <div class="work-thumb-grain"></div>
@@ -416,12 +179,12 @@ footer a:hover{color:var(--yellow)}
           <span class="work-tag">Institutional</span>
           <div class="play-btn"><div class="play-btn-arrow"></div></div>
           <span class="work-num">04</span>
-          <div class="yt-badge"><svg width="14" height="10" viewBox="0 0 24 17" fill="red"><path d="M23.5 2.7S23.2.9 22.4.2C21.4-.8 20.3-.8 19.8-.8 16.5-1 12 -1 12 -1s-4.5 0-7.8.2C3.7-.6 2.6-.5 1.6.2.8.9.5 2.7.5 2.7S.2 4.8.2 6.9v2c0 2.1.3 4.2.3 4.2s.3 1.8 1.1 2.5c1 1 2.4.9 3 1 2.2.2 9.4.3 9.4.3s4.5 0 7.8-.3c.5-.1 1.6-.1 2.6-1 .8-.7 1.1-2.5 1.1-2.5s.3-2.1.3-4.2v-2C23.8 4.8 23.5 2.7 23.5 2.7zM9.7 11.5V4.9l7 3.3-7 3.3z"/></svg><span>Shorts</span></div>
         </div>
         <div class="work-info">
           <div class="work-client">Nirmala College</div>
           <h3>Welcome Film — Dept. of Physics</h3>
           <p>A short welcome ad introducing incoming students to the physics department.</p>
+          <a class="card-link" href="services.html">View details →</a>
         </div>
       </div>
 
@@ -430,86 +193,70 @@ footer a:hover{color:var(--yellow)}
         <h3>More on the way</h3>
         <p>Currently in production — check back soon.</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
 
-<section class="section services-section" id="services">
+<section class="section originals-section" id="originals">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow">What We Do</div>
-      <h2>Services</h2>
-      <p>Video ads and creative campaigns for Kerala businesses — from first concept to the final cut.</p>
+      <div class="section-eyebrow">BrandConvey Originals</div>
+      <h2>Stories we made<br>on our own terms.</h2>
+      <p>Original productions created with full creative freedom — films we're especially proud of.</p>
     </div>
-    <div class="services-grid reveal">
-      <div class="svc-cell"><div class="svc-idx">01</div><h3>Video Ads</h3><p>Polished ad films built to sell — for launches, promotions and brand awareness.</p></div>
-      <div class="svc-cell"><div class="svc-idx">02</div><h3>Creative Campaigns</h3><p>Full campaign concepts — idea, script, shoot and rollout — built around one strong hook.</p></div>
-      <div class="svc-cell"><div class="svc-idx">03</div><h3>Brand Films</h3><p>Cinematic short films that introduce your brand's story, product or space.</p></div>
-      <div class="svc-cell"><div class="svc-idx">04</div><h3>Documentary Production</h3><p>Longer-form documentary content for institutions, colleges and organisations.</p></div>
-      <div class="svc-cell"><div class="svc-idx">05</div><h3>Social Media Content</h3><p>Reels, campaign creatives and caption strategy built for Instagram growth.</p></div>
-      <div class="svc-cell"><div class="svc-idx">06</div><h3>Corporate &amp; Institutional Video</h3><p>Welcome films, event coverage and promotional videos for colleges and companies.</p></div>
-    </div>
-  </div>
-</section>
+    <div class="originals-grid">
 
-<section class="section process-section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="section-eyebrow">How It Works</div>
-      <h2>From brief to final cut.</h2>
-      <p>Every project follows the same careful arc — no surprises, no handoffs, just good work.</p>
-    </div>
-    <div class="process-list">
-      <div class="process-step reveal"><div class="proc-n">01</div><div class="proc-body"><h3>Discovery Call</h3><p>We start with a conversation about your brand, audience, and goals. You bring the brief — we bring the questions that sharpen it into a direction.</p></div></div>
-      <div class="process-step reveal d1"><div class="proc-n">02</div><div class="proc-body"><h3>Concept &amp; Script</h3><p>We develop the core idea, write the script, and lock a shot list. You approve everything before a camera is picked up.</p></div></div>
-      <div class="process-step reveal d2"><div class="proc-n">03</div><div class="proc-body"><h3>Shoot</h3><p>We handle the full production — location, talent, gear. Varghese leads cinematography on every project personally.</p></div></div>
-      <div class="process-step reveal d3"><div class="proc-n">04</div><div class="proc-body"><h3>Edit &amp; Deliver</h3><p>Cut, colour, sound, and captions — a polished file ready for broadcast, social, or wherever your audience lives.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section team-section" id="team">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="section-eyebrow">Who's Behind It</div>
-      <h2>Leadership</h2>
-      <p>A two-person creative and production team who lead every project from first call to final file.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <img class="avatar-photo" src="albin.jpg" alt="Albin George" onerror="this.classList.add('broken')">
-        <div class="avatar-fallback">AG</div>
-        <h3>Albin George</h3>
-        <div class="team-role">Founder — Managing Director &amp; Creative Director</div>
-        <p class="team-bio">Leads client strategy, creative direction and brand positioning across every BrandConvey project. Brings a marketing-science lens to every brief.</p>
-        <div class="creds"><span>BBA</span><span>Master of Marketing, Australia</span></div>
-        <div class="team-socials">
-          <a href="https://www.instagram.com/thenameisalbin?igsh=MTdubnN4cjBpbTVqdg%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Albin on Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-          </a>
-          <a href="mailto:ag@brandconvey.in" aria-label="Email Albin">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg>
-          </a>
+      <div class="orig-card reveal">
+        <div class="orig-thumb">
+          <span class="orig-client-badge">AJMI FOODS</span>
+          <img src="thumb1.png" alt="Puttu X Payasam — AJMI Foods original film">
+        </div>
+        <div class="orig-info">
+          <div class="orig-title">Puttu X Payasam</div>
+          <a class="orig-watch" href="#">Watch the film →</a>
         </div>
       </div>
-      <div class="team-card reveal d1">
-        <img class="avatar-photo" src="varghese.jpg" alt="Varghese George" onerror="this.classList.add('broken')">
-        <div class="avatar-fallback">VG</div>
-        <h3>Varghese George</h3>
-        <div class="team-role">Founder — Head of Production &amp; Operations Director</div>
-        <p class="team-bio">Runs production end-to-end — shoot direction, cinematography and editing for every film. Four years of hands-on content production experience.</p>
-        <div class="creds"><span>B.Sc. Physics</span><span>B.Ed</span><span>4 yrs in Content Production</span></div>
-        <div class="team-socials">
-          <a href="https://www.instagram.com/dop_vargezz?igsh=Z2UwdnFrcGo4ODI1" target="_blank" rel="noopener" aria-label="Varghese on Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-          </a>
-          <a href="mailto:vg@brandconvey.in" aria-label="Email Varghese">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg>
-          </a>
+
+      <div class="orig-card reveal d1">
+        <div class="orig-thumb">
+          <span class="orig-client-badge">MILMA</span>
+          <img src="thumb2.jpg" alt="Milma — original brand film">
+        </div>
+        <div class="orig-info">
+          <div class="orig-title">Milma</div>
+          <a class="orig-watch" href="#">Watch the film →</a>
         </div>
       </div>
+
+      <div class="orig-card-placeholder reveal d2">
+        <svg class="slate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 2l-4 5-4-5"/>
+          <line x1="2" y1="7" x2="22" y2="7"/>
+          <line x1="7" y1="2" x2="7" y2="7"/>
+          <line x1="12" y1="2" x2="12" y2="7"/>
+          <line x1="17" y1="2" x2="17" y2="7"/>
+        </svg>
+        <div class="orig-placeholder-label">In production</div>
+        <div class="orig-placeholder-sub">Coming soon to this screen</div>
+      </div>
+
+      <div class="orig-card-placeholder reveal d3">
+        <svg class="slate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 2l-4 5-4-5"/>
+          <line x1="2" y1="7" x2="22" y2="7"/>
+          <line x1="7" y1="2" x2="7" y2="7"/>
+          <line x1="12" y1="2" x2="12" y2="7"/>
+          <line x1="17" y1="2" x2="17" y2="7"/>
+        </svg>
+        <div class="orig-placeholder-label">Coming soon</div>
+        <div class="orig-placeholder-sub">A new project is in the works</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -519,11 +266,8 @@ footer a:hover{color:var(--yellow)}
     <h2 class="reveal">Got a brand worth telling<br>a story about?</h2>
     <p class="reveal d1">We're based in Kochi and work with businesses across Kerala and India.</p>
     <div class="cta-btns reveal d2">
-      <a class="btn btn-primary" href="tel:+919072615902">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +91 90726 15902
-      </a>
-      <a class="btn btn-outline" href="mailto:hello@brandconvey.in">hello@brandconvey.in</a>
+      <a class="btn btn-primary" href="contact.html">Start a project</a>
+      <a class="btn btn-outline" href="tel:+919072615902">+91 90726 15902</a>
     </div>
     <div class="contact-cards reveal d3">
       <div class="contact-card">
@@ -572,16 +316,6 @@ footer a:hover{color:var(--yellow)}
   </div>
 </footer>
 
-<script>
-!function(){var r=document.getElementById('railTrack');if(!r)return;var f=document.createDocumentFragment();for(var i=0;i<60;i++){var s=document.createElement('span');f.appendChild(s)}r.appendChild(f)}();
-!function(){var t=document.getElementById('tickerTrack');if(!t)return;var items=['Brand Films','Video Ads','Social Media Content','Documentaries','Campaign Strategy','Institutional Videos','Creative Campaigns','Kochi, Kerala'],f=document.createDocumentFragment();items.concat(items,items).forEach(function(tx){var s=document.createElement('span');s.className='t-item';s.textContent=tx;f.appendChild(s)});t.appendChild(f)}();
-var menuBtn=document.getElementById('menuBtn'),mobMenu=document.getElementById('mobMenu'),navEl=document.getElementById('mainNav');
-function openMenu(){mobMenu.style.paddingTop=(navEl.offsetHeight+24)+'px';mobMenu.classList.add('open');menuBtn.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
-function closeMenu(){mobMenu.classList.remove('open');menuBtn.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');document.body.style.overflow=''}
-menuBtn.addEventListener('click',function(){mobMenu.classList.contains('open')?closeMenu():openMenu()});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
-!function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('visible')});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.07,rootMargin:'0px 0px -32px 0px'});els.forEach(function(el){io.observe(el)})}();
-!function(){var strip=document.getElementById('filmstrip');if(!strip)return;var down=false,startX,sl,moved=false;strip.addEventListener('mousedown',function(e){down=true;moved=false;startX=e.pageX-strip.getBoundingClientRect().left;sl=strip.scrollLeft;strip.style.userSelect='none'});window.addEventListener('mouseup',function(){down=false;strip.style.userSelect=''});strip.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();if(Math.abs(e.pageX-strip.getBoundingClientRect().left-startX)>5)moved=true;strip.scrollLeft=sl-(e.pageX-strip.getBoundingClientRect().left-startX)*1.4});strip.addEventListener('click',function(e){if(moved){moved=false;return}var card=e.target.closest('.work-card[data-url]');if(card)window.open(card.dataset.url,'_blank','noopener')});strip.addEventListener('touchstart',function(){moved=false},{passive:true});strip.addEventListener('touchmove',function(){moved=true},{passive:true});strip.addEventListener('touchend',function(e){if(moved)return;var card=e.target.closest('.work-card[data-url]');if(card)window.open(card.dataset.url,'_blank','noopener')})}();
-</script>
+<script src="shared.js"></script>
 </body>
 </html>
