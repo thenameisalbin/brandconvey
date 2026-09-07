@@ -95,6 +95,7 @@ button{cursor:pointer;border:none;background:none;font:inherit}
 }
 .section-head{margin-bottom:clamp(32px,4vw,56px);max-width:620px}
 .section-head h2{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.12;color:var(--cream)}
+.h2-gold{color:var(--gold)!important}
 .section-head p{margin-top:14px;color:var(--muted);font-size:clamp(14px,1.6vw,15.5px);line-height:1.75}
 
 /* ── NAV ─────────────────────────────────────────────────── */
@@ -241,18 +242,35 @@ nav{
   transition:background .2s,border-color .2s,color .2s;
 }
 .hero-tags span:hover{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold)}
-/* Hero stats strip */
-.hero-stats{
-  margin-top:32px;display:flex;gap:clamp(24px,4vw,40px);
-  padding-top:28px;border-top:1px solid var(--border);
+/* ── Gallery link (below filmstrip) ─────────────────────── */
+.gallery-link-wrap{
+  display:flex;justify-content:flex-end;
+  padding-top:20px;
 }
-.h-stat{display:flex;flex-direction:column;gap:4px}
-.h-stat-n{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(30px,3.8vw,44px);font-weight:600;line-height:1;
-  color:var(--cream);letter-spacing:-.02em;
+.gallery-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+  color:var(--gold);text-decoration:none;
+  padding:10px 0;
+  transition:color .2s,gap .2s;
 }
-.h-stat-l{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.gallery-link:hover{color:var(--gold-bright);gap:12px}
+.gallery-arrow{transition:transform .2s}
+.gallery-link:hover .gallery-arrow{transform:translate(3px,-3px)}
+
+/* ── Gallery pages: tighter gap below page-hero ─────────── */
+.gallery-content-section{padding-top:clamp(24px,3vw,40px)}
+
+/* ── Work gallery grid (work-gallery.html) ───────────────── */
+.work-gallery-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+}
+.work-gallery-grid .work-card{
+  scroll-snap-align:none;
+}
+
 
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-right{display:none}.hero-lead{max-width:100%}}
 @media(max-width:480px){.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{justify-content:center}.hero-status{font-size:11px;white-space:normal}}
