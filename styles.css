@@ -614,9 +614,12 @@ nav{
 .cc-value address{font-style:normal;font-size:clamp(12.5px,1.3vw,14px);font-weight:500;color:var(--cream);line-height:1.7}
 .cc-founder-name{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);opacity:.75}
 /* Text overrides inside dark CTA cards */
-.cta-section .cc-icon{background:rgba(56,56,184,.18)}
+.cta-section .cc-icon{background:rgba(56,56,184,.30);color:rgba(248,248,254,.75)}
+.cta-section .cc-label{color:rgba(248,248,254,.45);opacity:1}
+.cta-section .cc-founder-name{color:rgba(248,248,254,.55);opacity:1}
 .cta-section .cc-value a{color:rgba(248,248,254,.9)}
-.cta-section .cc-value address{color:rgba(248,248,254,.9)}
+.cta-section .cc-value address{color:rgba(248,248,254,.85)}
+.cta-section{--rule:rgba(248,248,254,.10)}
 @media(max-width:680px){.contact-cards{grid-template-columns:1fr 1fr;gap:12px}}
 @media(max-width:420px){.contact-cards{grid-template-columns:1fr}}
 
