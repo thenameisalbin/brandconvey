@@ -386,8 +386,8 @@ function _publish(pat, btn, statusEl) {
   var apiBase = 'https://api.github.com/repos/' + _CONFIG.owner + '/' + _CONFIG.repo + '/contents/content.json';
   var headers = { 'Authorization': 'token ' + pat, 'Content-Type': 'application/json' };
 
-  /* 1. GET current SHA (undefined if file doesn't exist yet) */
-  fetch(apiBase, { headers: headers })
+  /* 1. GET current SHA from the correct branch (undefined if file doesn't exist yet) */
+  fetch(apiBase + '?ref=' + _CONFIG.branch, { headers: headers })
     .then(function(r) {
       if (r.status === 401) throw new Error('Invalid PAT — check permissions (needs repo Contents: write).');
       if (r.status === 404) return { sha: null };
