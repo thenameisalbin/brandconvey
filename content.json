@@ -9,19 +9,35 @@
     "footerCopyright": "© 2026 BrandConvey Studios · Kochi, Kerala, India"
   },
   "ticker": {
-    "items": ["Brand Films", "Video Ads", "Social Media Content", "Documentaries", "Campaign Strategy", "Institutional Videos", "Creative Campaigns", "Kochi, Kerala"]
+    "items": [
+      "Brand Films",
+      "Video Ads",
+      "Social Media Content",
+      "Documentaries",
+      "Campaign Strategy",
+      "Institutional Videos",
+      "Creative Campaigns",
+      "Kochi, Kerala"
+    ]
   },
   "hero": {
     "eyebrow": "Kochi, Kerala · Creative Production Agency",
     "h1Plain": "Ads that speak,",
-    "h1Em": "stories",
+    "h1Em": "story",
     "h1Suffix": " that stay.",
     "statusText": "Reel's still rolling — new work added as it wraps",
     "card1Label": "Who we are",
     "card1TaglinePlain": "A creative production studio turning brand stories into ",
     "card1TaglineEm": "films people remember.",
     "card2Label": "What we create",
-    "card2Tags": ["Video Ads", "Brand Films", "Campaigns", "Documentaries", "Social Media Content", "Corporate Films"]
+    "card2Tags": [
+      "Video Ads",
+      "Brand Films",
+      "Campaigns",
+      "Documentaries",
+      "Social Media Content",
+      "Corporate Films"
+    ]
   },
   "work": {
     "cards": [
@@ -81,20 +97,50 @@
   },
   "services": {
     "items": [
-      { "title": "Video Ads", "desc": "Polished ad films built to sell — for launches, promotions and brand awareness." },
-      { "title": "Creative Campaigns", "desc": "Full campaign concepts — idea, script, shoot and rollout — built around one strong hook." },
-      { "title": "Brand Films", "desc": "Cinematic short films that introduce your brand's story, product or space." },
-      { "title": "Documentary Production", "desc": "Longer-form documentary content for institutions, colleges and organisations." },
-      { "title": "Social Media Content", "desc": "Reels, campaign creatives and caption strategy built for Instagram growth." },
-      { "title": "Corporate & Institutional Video", "desc": "Welcome films, event coverage and promotional videos for colleges and companies." }
+      {
+        "title": "Video Ads",
+        "desc": "Polished ad films built to sell — for launches, promotions and brand awareness."
+      },
+      {
+        "title": "Creative Campaigns",
+        "desc": "Full campaign concepts — idea, script, shoot and rollout — built around one strong hook."
+      },
+      {
+        "title": "Brand Films",
+        "desc": "Cinematic short films that introduce your brand's story, product or space."
+      },
+      {
+        "title": "Documentary Production",
+        "desc": "Longer-form documentary content for institutions, colleges and organisations."
+      },
+      {
+        "title": "Social Media Content",
+        "desc": "Reels, campaign creatives and caption strategy built for Instagram growth."
+      },
+      {
+        "title": "Corporate & Institutional Video",
+        "desc": "Welcome films, event coverage and promotional videos for colleges and companies."
+      }
     ]
   },
   "process": {
     "steps": [
-      { "title": "Discovery Call", "desc": "We start with a conversation about your brand, audience, and goals. You bring the brief — we bring the questions that sharpen it into a direction." },
-      { "title": "Concept & Script", "desc": "We develop the core idea, write the script, and lock a shot list. You approve everything before a camera is picked up." },
-      { "title": "Shoot", "desc": "We handle the full production — location, talent, gear. Varghese leads cinematography on every project personally." },
-      { "title": "Edit & Deliver", "desc": "Cut, colour, sound, and captions — a polished file ready for broadcast, social, or wherever your audience lives." }
+      {
+        "title": "Discovery Call",
+        "desc": "We start with a conversation about your brand, audience, and goals. You bring the brief — we bring the questions that sharpen it into a direction."
+      },
+      {
+        "title": "Concept & Script",
+        "desc": "We develop the core idea, write the script, and lock a shot list. You approve everything before a camera is picked up."
+      },
+      {
+        "title": "Shoot",
+        "desc": "We handle the full production — location, talent, gear. Varghese leads cinematography on every project personally."
+      },
+      {
+        "title": "Edit & Deliver",
+        "desc": "Cut, colour, sound, and captions — a polished file ready for broadcast, social, or wherever your audience lives."
+      }
     ]
   },
   "team": {
@@ -105,7 +151,10 @@
         "bio": "Leads client strategy, creative direction and brand positioning across every BrandConvey project. Brings a marketing-science lens to every brief.",
         "photo": "albin.jpg",
         "initials": "AG",
-        "creds": ["BBA", "Master of Marketing, Australia"],
+        "creds": [
+          "BBA",
+          "Master of Marketing, Australia"
+        ],
         "instagram": "https://www.instagram.com/thenameisalbin?igsh=MTdubnN4cjBpbTVqdg%3D%3D&utm_source=qr",
         "email": "ag@brandconvey.in"
       },
@@ -115,7 +164,11 @@
         "bio": "Runs production end-to-end — shoot direction, cinematography and editing for every film. Four years of hands-on content production experience.",
         "photo": "varghese.jpg",
         "initials": "VG",
-        "creds": ["B.Sc. Physics", "B.Ed", "4 yrs in Content Production"],
+        "creds": [
+          "B.Sc. Physics",
+          "B.Ed",
+          "4 yrs in Content Production"
+        ],
         "instagram": "https://www.instagram.com/dop_vargezz?igsh=Z2UwdnFrcGo4ODI1",
         "email": "vg@brandconvey.in"
       }
@@ -126,8 +179,14 @@
     "phone": "+91 90726 15902",
     "phoneHref": "tel:+919072615902",
     "founders": [
-      { "name": "Albin George", "email": "ag@brandconvey.in" },
-      { "name": "Varghese George", "email": "vg@brandconvey.in" }
+      {
+        "name": "Albin George",
+        "email": "ag@brandconvey.in"
+      },
+      {
+        "name": "Varghese George",
+        "email": "vg@brandconvey.in"
+      }
     ],
     "address": "Kuppathadathil Building,\nPancode, Puthencruz\nErnakulam — 682308"
   }
