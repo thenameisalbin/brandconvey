@@ -1,0 +1,367 @@
+/* ── Admin bar ──────────────────────────────────────────────── */
+#adminBar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #1a1a2e;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  border-bottom: 2px solid #3838B8;
+  box-shadow: 0 2px 12px rgba(0,0,0,.4);
+  flex-wrap: wrap;
+  min-height: 48px;
+}
+
+body.admin-mode {
+  padding-top: 48px;
+}
+
+.ab-label {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #a0a8ff;
+  white-space: nowrap;
+}
+
+.ab-pat-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 380px;
+}
+
+.ab-pat {
+  flex: 1;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+.ab-pat:focus { border-color: #3838B8; background: rgba(255,255,255,.12); }
+.ab-pat::placeholder { color: rgba(255,255,255,.4); }
+
+.ab-conn {
+  font-size: 12px;
+  white-space: nowrap;
+  color: rgba(255,255,255,.45);
+}
+.ab-conn.ok   { color: #4ade80; }
+.ab-conn.err  { color: #f87171; }
+
+.ab-unsaved {
+  font-size: 12px;
+  color: #fbbf24;
+  white-space: nowrap;
+}
+
+.ab-publish {
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #3838B8;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, opacity .15s;
+  min-height: 36px;
+}
+.ab-publish:hover { background: #4848d0; }
+.ab-publish:disabled { opacity: .5; cursor: default; }
+.ab-publish.has-changes { background: #16a34a; }
+.ab-publish.has-changes:hover { background: #15803d; }
+
+.ab-exit {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.ab-exit:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+/* ── Password / setup modal overlay ──────────────────────────── */
+#adminOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  background: rgba(14,14,30,.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-modal {
+  background: #1a1a2e;
+  border: 1px solid rgba(56,56,184,.4);
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 24px 64px rgba(0,0,0,.6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-modal-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #a0a8ff;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.admin-modal-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.admin-modal-input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+}
+.admin-modal-input:focus { border-color: #3838B8; }
+
+.admin-modal-err {
+  font-size: 13px;
+  color: #f87171;
+  min-height: 16px;
+}
+
+.admin-modal-btn {
+  padding: 11px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #3838B8;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background .15s;
+}
+.admin-modal-btn:hover { background: #4848d0; }
+.admin-modal-btn:disabled { opacity: .5; cursor: default; }
+
+.admin-hash-out {
+  font-family: monospace;
+  font-size: 11px;
+  word-break: break-all;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 6px;
+  padding: 10px;
+  color: #4ade80;
+  cursor: pointer;
+  user-select: all;
+}
+
+/* ── Edit host wrapper ───────────────────────────────────────── */
+.edit-host {
+  display: inline;
+  position: relative;
+}
+
+/* When the host is inside a block-level context, display as block */
+p > .edit-host,
+h1 > .edit-host,
+h2 > .edit-host,
+h3 > .edit-host,
+div > .edit-host {
+  display: inline;
+}
+
+/* ── Pencil button ────────────────────────────────────────────── */
+.edit-pencil {
+  display: none;
+  position: absolute;
+  top: -6px;
+  right: -28px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(56,56,184,.6);
+  background: #fff;
+  color: #3838B8;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  transition: background .12s;
+  padding: 0;
+}
+.edit-pencil:hover { background: #3838B8; color: #fff; }
+
+.edit-host:hover .edit-pencil {
+  display: flex;
+}
+
+/* ── Editable element state ──────────────────────────────────── */
+[contenteditable="true"].editing {
+  outline: 2px solid #3838B8;
+  outline-offset: 2px;
+  border-radius: 3px;
+  background: rgba(56,56,184,.06);
+  cursor: text;
+  min-width: 40px;
+  display: inline-block;
+}
+
+/* ── Edit popover (URL / tags / creds) ───────────────────────── */
+.edit-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 1000;
+  background: #fff;
+  border: 1px solid rgba(56,56,184,.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  min-width: 240px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ep-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #666;
+}
+
+.ep-input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 36px;
+}
+.ep-input:focus { border-color: #3838B8; }
+
+.ep-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.ep-save, .ep-cancel {
+  flex: 1;
+  padding: 7px 10px;
+  border-radius: 7px;
+  border: none;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 36px;
+}
+.ep-save   { background: #3838B8; color: #fff; }
+.ep-save:hover { background: #4848d0; }
+.ep-cancel { background: #f3f4f6; color: #374151; }
+.ep-cancel:hover { background: #e5e7eb; }
+
+/* ── Array delete button ─────────────────────────────────────── */
+[data-array] {
+  position: relative;
+}
+
+.admin-delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(239,68,68,.4);
+  background: rgba(255,255,255,.9);
+  color: #ef4444;
+  font-size: 12px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: background .12s;
+}
+.admin-delete-btn:hover { background: #ef4444; color: #fff; }
+
+[data-array]:hover > .admin-delete-btn {
+  display: flex;
+}
+
+/* ── Add item button ──────────────────────────────────────────── */
+.admin-add-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px dashed rgba(56,56,184,.35);
+  background: rgba(56,56,184,.04);
+  color: #3838B8;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 12px;
+  transition: background .15s, border-color .15s;
+  min-height: 44px;
+}
+.admin-add-btn:hover {
+  background: rgba(56,56,184,.1);
+  border-color: rgba(56,56,184,.6);
+}
+
+/* ── Mobile tweaks ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  #adminBar { gap: 8px; padding: 8px 12px; }
+  .ab-pat-wrap { max-width: 100%; }
+  .ab-label { font-size: 11px; }
+}
