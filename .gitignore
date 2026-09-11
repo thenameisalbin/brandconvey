@@ -1,0 +1,11 @@
+# Dev server
+devserver.py
+
+# Claude Code tooling
+.claude/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

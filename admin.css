@@ -193,58 +193,79 @@ body.admin-mode {
   user-select: all;
 }
 
-/* ── Edit host wrapper ───────────────────────────────────────── */
-.edit-host {
-  display: inline;
-  position: relative;
-}
-
-/* When the host is inside a block-level context, display as block */
-p > .edit-host,
-h1 > .edit-host,
-h2 > .edit-host,
-h3 > .edit-host,
-div > .edit-host {
-  display: inline;
-}
-
-/* ── Pencil button ────────────────────────────────────────────── */
-.edit-pencil {
-  display: none;
-  position: absolute;
-  top: -6px;
-  right: -28px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1px solid rgba(56,56,184,.6);
-  background: #fff;
-  color: #3838B8;
-  font-size: 13px;
-  line-height: 1;
+/* ── Editable zone highlight — always visible in admin mode ──── */
+.admin-mode [data-edit-path] {
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,.15);
-  transition: background .12s;
-  padding: 0;
-}
-.edit-pencil:hover { background: #3838B8; color: #fff; }
-
-.edit-host:hover .edit-pencil {
-  display: flex;
-}
-
-/* ── Editable element state ──────────────────────────────────── */
-[contenteditable="true"].editing {
-  outline: 2px solid #3838B8;
-  outline-offset: 2px;
   border-radius: 3px;
-  background: rgba(56,56,184,.06);
+  transition: outline .1s, background .1s;
+  outline: 1.5px dashed rgba(56,56,184,.4);
+  outline-offset: 2px;
+}
+.admin-mode [data-edit-path]:hover {
+  outline-color: #3838B8;
+  background: rgba(56,56,184,.07);
+}
+
+/* ── Edit badge — label shown next to each editable zone ─────── */
+.edit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: #3838B8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: .04em;
+  vertical-align: middle;
+  margin-left: 5px;
+  text-transform: uppercase;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: .75;
+}
+
+/* ── Active editing state ────────────────────────────────────── */
+[contenteditable="true"].editing {
+  outline: 2px solid #3838B8 !important;
+  outline-offset: 3px;
+  border-radius: 4px;
+  background: rgba(56,56,184,.06) !important;
   cursor: text;
   min-width: 40px;
-  display: inline-block;
+}
+
+/* ── Edit hint bar — shown below active editable ─────────────── */
+#adminEditHint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: #1a1a2e;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.35);
+  border: 1px solid rgba(56,56,184,.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+}
+#adminEditHint.visible { opacity: 1; }
+#adminEditHint kbd {
+  background: rgba(255,255,255,.12);
+  border-radius: 5px;
+  padding: 1px 7px;
+  font-family: inherit;
+  font-size: 12px;
 }
 
 /* ── Edit popover (URL / tags / creds) ───────────────────────── */
@@ -307,21 +328,216 @@ div > .edit-host {
 .ep-cancel { background: #f3f4f6; color: #374151; }
 .ep-cancel:hover { background: #e5e7eb; }
 
-/* ── Array delete button ─────────────────────────────────────── */
+/* ── Disable reveal animations in admin mode ─────────────────── */
+body.admin-mode .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  transition: none !important;
+}
+
+/* ── Add item modal ───────────────────────────────────────────── */
+.aaf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 15000;
+  background: rgba(14,14,30,.65);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.aaf-modal {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0,0,0,.3);
+}
+.aaf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+.aaf-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #14142A;
+}
+.aaf-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #6b7280;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.aaf-close:hover { background: #fee2e2; color: #ef4444; border-color: #fca5a5; }
+.aaf-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.aaf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.aaf-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.aaf-input {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 14px;
+  font-family: inherit;
+  color: #14142A;
+  outline: none;
+  transition: border-color .12s;
+  min-height: 40px;
+}
+.aaf-input:focus { border-color: #3838B8; }
+.aaf-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+.aaf-footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+.aaf-cancel {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 44px;
+}
+.aaf-cancel:hover { background: #f3f4f6; }
+.aaf-save {
+  flex: 2;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #3838B8;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 44px;
+}
+.aaf-save:hover { background: #4848d0; }
+.aaf-save:disabled { opacity: .6; cursor: default; }
+
+/* ── Add modal: hint text ────────────────────────────────────── */
+.aaf-hint {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: -2px;
+  margin-bottom: 4px;
+}
+
+/* ── Add modal: image upload zone ────────────────────────────── */
+.aaf-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f9fafb;
+  transition: border-color .15s, background .15s;
+  position: relative;
+  overflow: hidden;
+}
+.aaf-upload-zone:hover {
+  border-color: #3838B8;
+  background: rgba(56,56,184,.04);
+}
+.aaf-file-inp {
+  display: none;
+}
+.aaf-upload-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #9ca3af;
+  font-size: 13px;
+  pointer-events: none;
+}
+.aaf-upload-icon {
+  font-size: 22px;
+  line-height: 1;
+  color: #6b7280;
+}
+.aaf-upload-preview {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+.aaf-thumb {
+  max-width: 100%;
+  max-height: 140px;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+}
+.aaf-fname {
+  font-size: 11px;
+  color: #6b7280;
+  word-break: break-all;
+  text-align: center;
+}
+
+/* ── Array delete / edit buttons ─────────────────────────────── */
 [data-array] {
   position: relative;
 }
 
-.admin-delete-btn {
+.admin-delete-btn,
+.admin-edit-btn {
   position: absolute;
   top: 8px;
-  right: 8px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid rgba(239,68,68,.4);
   background: rgba(255,255,255,.9);
-  color: #ef4444;
   font-size: 12px;
   cursor: pointer;
   display: none;
@@ -329,10 +545,26 @@ div > .edit-host {
   justify-content: center;
   z-index: 50;
   transition: background .12s;
+  padding: 0;
+}
+
+.admin-delete-btn {
+  right: 8px;
+  border: 1px solid rgba(239,68,68,.4);
+  color: #ef4444;
 }
 .admin-delete-btn:hover { background: #ef4444; color: #fff; }
 
-[data-array]:hover > .admin-delete-btn {
+.admin-edit-btn {
+  right: 44px;
+  border: 1px solid rgba(56,56,184,.4);
+  color: #3838B8;
+}
+.admin-edit-btn:hover { background: #3838B8; color: #fff; }
+.admin-edit-btn svg { display: block; }
+
+[data-array]:hover > .admin-delete-btn,
+[data-array]:hover > .admin-edit-btn {
   display: flex;
 }
 
@@ -359,9 +591,154 @@ div > .edit-host {
   border-color: rgba(56,56,184,.6);
 }
 
-/* ── Mobile tweaks ───────────────────────────────────────────── */
+/* ── Image upload button (camera icon on thumbnails) ─────────── */
+.admin-img-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 42px; /* offset left of delete btn */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,.65);
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: background .12s, opacity .12s;
+  padding: 0;
+}
+.admin-img-btn svg { display: block; }
+.admin-img-btn:hover { background: #3838B8; }
+
+.work-thumb:hover .admin-img-btn,
+.orig-thumb:hover .admin-img-btn,
+.admin-img-btn:focus { display: flex; }
+
+/* Photo button on team cards sits bottom-right of the card header area */
+.admin-photo-btn {
+  top: 8px;
+  right: 44px;
+  bottom: auto;
+}
+.team-card:hover .admin-photo-btn { display: flex; }
+
+/* Uploading overlay */
+.admin-uploading {
+  position: relative;
+  pointer-events: none;
+}
+.admin-uploading::after {
+  content: 'Uploading…';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  z-index: 60;
+  border-radius: inherit;
+}
+
+/* ── Drag-to-reorder handle ─────────────────────────────────── */
+.admin-drag-handle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,.65);
+  color: #fff;
+  cursor: grab;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: background .12s;
+  padding: 0;
+}
+.admin-drag-handle svg { display: block; }
+.admin-drag-handle:hover { background: #3838B8; }
+.admin-drag-handle:active { cursor: grabbing; }
+
+.work-thumb:hover .admin-drag-handle,
+.orig-thumb:hover .admin-drag-handle,
+.admin-drag-handle:focus { display: flex; }
+
+.drag-source {
+  opacity: 0.3;
+}
+.drag-over {
+  outline: 2px dashed #3838B8;
+  outline-offset: 3px;
+}
+
+/* ── Mobile: admin bar wraps to two rows ─────────────────────── */
 @media (max-width: 600px) {
-  #adminBar { gap: 8px; padding: 8px 12px; }
-  .ab-pat-wrap { max-width: 100%; }
-  .ab-label { font-size: 11px; }
+  #adminBar {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px 10px;
+  }
+  .ab-label { order: 1; flex: 1; font-size: 12px; }
+  .ab-exit  { order: 2; }
+  .ab-pat-wrap {
+    order: 3;
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .ab-unsaved { order: 4; flex: 1; }
+  .ab-publish { order: 5; min-width: 90px; }
+}
+
+/* ── Mobile: prevent iOS auto-zoom on inputs ─────────────────── */
+@media (max-width: 767px) {
+  .aaf-input,
+  .aaf-textarea,
+  .admin-modal-input,
+  .ab-pat,
+  .ep-input {
+    font-size: 16px !important;
+  }
+}
+
+/* ── Touch devices: always show action buttons ───────────────── */
+@media (hover: none) {
+  .admin-delete-btn,
+  .admin-edit-btn,
+  .admin-img-btn,
+  .admin-drag-handle {
+    display: flex !important;
+    width: 36px;
+    height: 36px;
+  }
+  .admin-photo-btn {
+    display: flex !important;
+    width: 36px;
+    height: 36px;
+  }
+  /* Adjust position of edit btn to account for larger size */
+  .admin-edit-btn { right: 48px; }
+}
+
+/* ── Mobile: modals fill screen comfortably ──────────────────── */
+@media (max-width: 540px) {
+  .aaf-overlay { padding: 12px; }
+  .aaf-modal {
+    border-radius: 12px;
+    max-height: 95vh;
+  }
+  .aaf-header { padding: 16px 16px 12px; }
+  .aaf-body   { padding: 14px 16px; gap: 12px; }
+  .aaf-footer { padding: 12px 16px 16px; }
+  .admin-modal { padding: 28px 20px; }
 }

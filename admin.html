@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — BrandConvey Studios</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #0e0e1e;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #a0a8ff;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .sub {
+      font-size: 14px;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 48px;
+    }
+    .pages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 740px;
+    }
+    .page-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 20px 22px;
+      border-radius: 14px;
+      border: 1px solid rgba(56,56,184,.35);
+      background: rgba(56,56,184,.07);
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, transform .1s;
+    }
+    .page-btn:hover {
+      background: rgba(56,56,184,.18);
+      border-color: rgba(56,56,184,.7);
+      transform: translateY(-2px);
+    }
+    .page-btn:active { transform: translateY(0); }
+    .page-icon {
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .page-name {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .page-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      line-height: 1.4;
+    }
+    .page-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: rgba(56,56,184,.35);
+      color: #a0a8ff;
+    }
+    .footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">BrandConvey Studios</div>
+  <h1>Admin Panel</h1>
+  <p class="sub">Click a page to open it in edit mode</p>
+
+  <div class="pages">
+    <a class="page-btn" href="index.html?edit" target="_blank" rel="noopener">
+      <div class="page-icon">🏠</div>
+      <div class="page-name">Home</div>
+      <div class="page-desc">Hero, work filmstrip, originals preview, contact cards</div>
+      <span class="page-badge">index.html</span>
+    </a>
+
+    <a class="page-btn" href="work-gallery.html?edit" target="_blank" rel="noopener">
+      <div class="page-icon">🎬</div>
+      <div class="page-name">Work Gallery</div>
+      <div class="page-desc">All client work cards — add, delete, reorder</div>
+      <span class="page-badge">work-gallery.html</span>
+    </a>
+
+    <a class="page-btn" href="originals-gallery.html?edit" target="_blank" rel="noopener">
+      <div class="page-icon">🎞️</div>
+      <div class="page-name">Originals Gallery</div>
+      <div class="page-desc">BrandConvey original films — add, delete, reorder</div>
+      <span class="page-badge">originals-gallery.html</span>
+    </a>
+
+    <a class="page-btn" href="about.html?edit" target="_blank" rel="noopener">
+      <div class="page-icon">👥</div>
+      <div class="page-name">About</div>
+      <div class="page-desc">Team members, bios, photos and credentials</div>
+      <span class="page-badge">about.html</span>
+    </a>
+
+    <a class="page-btn" href="services.html?edit" target="_blank" rel="noopener">
+      <div class="page-icon">⚙️</div>
+      <div class="page-name">Services</div>
+      <div class="page-desc">Service offerings and production process steps</div>
+      <span class="page-badge">services.html</span>
+    </a>
+
+    <a class="page-btn" href="contact.html?edit" target="_blank" rel="noopener">
+      <div class="page-icon">✉️</div>
+      <div class="page-name">Contact</div>
+      <div class="page-desc">Email, phone, founders list and studio address</div>
+      <span class="page-badge">contact.html</span>
+    </a>
+  </div>
+
+  <p class="footer">Each page opens in a new tab and prompts for the admin password.</p>
+</body>
+</html>

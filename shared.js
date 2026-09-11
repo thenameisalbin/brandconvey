@@ -32,9 +32,10 @@ var _SVG = {
 /* ── Build: work card ───────────────────────────────────────── */
 function _buildWorkCard(card, idx) {
   var p = 'work.cards.' + idx;
-  return '<div class="work-card" data-array="work.cards" data-idx="' + idx + '">' +
+  var url = card.watchUrl && card.watchUrl !== '#' ? card.watchUrl : '';
+  return '<div class="work-card"' + (url ? ' data-url="' + _esc(url) + '"' : '') + ' data-array="work.cards" data-idx="' + idx + '">' +
     '<div class="work-thumb">' +
-      '<img class="work-thumb-img" src="' + _esc(card.image) + '" alt="' + _esc(card.client) + '" style="object-position:' + _esc(card.imagePosition || 'center center') + '">' +
+      (card.image ? '<img class="work-thumb-img" src="' + _esc(card.image) + '" alt="' + _esc(card.client) + '" style="object-position:' + _esc(card.imagePosition || 'center center') + '" onerror="this.style.opacity=\'0\'">' : '') +
       '<div class="work-thumb-grain"></div>' +
       '<div class="work-thumb-vignette"></div>' +
       '<span class="work-tag" data-edit-path="' + p + '.tag">' + _esc(card.tag) + '</span>' +
@@ -45,7 +46,7 @@ function _buildWorkCard(card, idx) {
       '<div class="work-client" data-edit-path="' + p + '.client">' + _esc(card.client) + '</div>' +
       '<h3 data-edit-path="' + p + '.title">' + _esc(card.title) + '</h3>' +
       '<p data-edit-path="' + p + '.desc">' + _esc(card.desc) + '</p>' +
-      '<a class="card-link" href="services.html">View details →</a>' +
+      (url ? '<span class="card-link">↗ Click to watch</span>' : '') +
     '</div>' +
   '</div>';
 }
@@ -53,14 +54,15 @@ function _buildWorkCard(card, idx) {
 /* ── Build: originals card ──────────────────────────────────── */
 function _buildOrigCard(film, idx) {
   var p = 'originals.films.' + idx;
-  return '<div class="orig-card reveal" data-array="originals.films" data-idx="' + idx + '">' +
+  var hasUrl = film.watchUrl && film.watchUrl !== '#';
+  return '<div class="orig-card reveal" data-array="originals.films" data-idx="' + idx + '"' + (hasUrl ? ' data-url="' + _esc(film.watchUrl) + '"' : '') + '>' +
     '<div class="orig-thumb">' +
       '<span class="orig-client-badge" data-edit-path="' + p + '.client">' + _esc(film.client) + '</span>' +
-      '<img src="' + _esc(film.image) + '" alt="' + _esc(film.title) + '">' +
+      (film.image ? '<img src="' + _esc(film.image) + '" alt="' + _esc(film.title) + '" onerror="this.style.opacity=\'0\'">' : '') +
     '</div>' +
     '<div class="orig-info">' +
       '<div class="orig-title" data-edit-path="' + p + '.title">' + _esc(film.title) + '</div>' +
-      '<a class="orig-watch" href="' + _esc(film.watchUrl) + '" data-edit-path="' + p + '.watchUrl" data-edit-type="url">Watch the film →</a>' +
+      '<span class="orig-watch" data-edit-path="' + p + '.watchUrl" data-edit-type="url">' + (hasUrl ? '↗ Watch the film' : 'Coming soon') + '</span>' +
     '</div>' +
   '</div>';
 }
@@ -96,7 +98,7 @@ function _buildTeamCard(member, idx) {
   var delay = idx > 0 && idx < 4 ? ' d' + idx : '';
   var creds = (member.creds || []).map(function(c){ return '<span>' + _esc(c) + '</span>'; }).join('');
   return '<div class="team-card reveal' + delay + '" data-array="team.members" data-idx="' + idx + '">' +
-    '<img class="avatar-photo" src="' + _esc(member.photo) + '" alt="' + _esc(member.name) + '" onerror="this.classList.add(\'broken\')">' +
+    (member.photo ? '<img class="avatar-photo" src="' + _esc(member.photo) + '" alt="' + _esc(member.name) + '" onerror="this.classList.add(\'broken\')">' : '') +
     '<div class="avatar-fallback" data-edit-path="' + p + '.initials">' + _esc(member.initials) + '</div>' +
     '<h3 data-edit-path="' + p + '.name">' + _esc(member.name) + '</h3>' +
     '<div class="team-role" data-edit-path="' + p + '.role">' + _esc(member.role) + '</div>' +
@@ -112,10 +114,11 @@ function _buildTeamCard(member, idx) {
 /* ── Build: contact cards (shared between pages) ────────────── */
 function _buildContactCards(contact) {
   var founders = (contact.founders || []).map(function(f, i) {
+    var p = 'contact.founders.' + i;
     var last = i === (contact.founders.length - 1);
-    return '<div style="display:flex;flex-direction:column;gap:4px;padding:10px 0' + (last ? ' 0' : '') + ';' + (!last ? 'border-bottom:1px solid var(--rule)' : '') + '">' +
-      '<div class="cc-founder-name">' + _esc(f.name) + '</div>' +
-      '<a href="mailto:' + _esc(f.email) + '">' + _esc(f.email) + '</a>' +
+    return '<div data-array="contact.founders" data-idx="' + i + '" style="display:flex;flex-direction:column;gap:4px;padding:10px 0' + (last ? '' : ';border-bottom:1px solid var(--rule)') + '">' +
+      '<div class="cc-founder-name" data-edit-path="' + p + '.name">' + _esc(f.name) + '</div>' +
+      '<a href="mailto:' + _esc(f.email) + '" data-edit-path="' + p + '.email" data-edit-type="url">' + _esc(f.email) + '</a>' +
     '</div>';
   }).join('');
   var addr = _esc(contact.address || '').replace(/\n/g, '<br>');
@@ -239,12 +242,7 @@ function _renderContent(data) {
   /* Originals grid (index.html + originals-gallery.html) ------ */
   document.querySelectorAll('[data-section="originals"]').forEach(function(grid) {
     var html = data.originals.films.map(_buildOrigCard).join('');
-    html += '<div class="orig-card-placeholder reveal d2">' +
-      '<svg class="slate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 2l-4 5-4-5"/><line x1="2" y1="7" x2="22" y2="7"/><line x1="7" y1="2" x2="7" y2="7"/><line x1="12" y1="2" x2="12" y2="7"/><line x1="17" y1="2" x2="17" y2="7"/></svg>' +
-      '<div class="orig-placeholder-label">In production</div>' +
-      '<div class="orig-placeholder-sub">Coming soon to this screen</div>' +
-    '</div>' +
-    '<div class="orig-card-placeholder reveal d3">' +
+    html += '<div class="orig-card-placeholder reveal d3">' +
       '<svg class="slate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 2l-4 5-4-5"/><line x1="2" y1="7" x2="22" y2="7"/><line x1="7" y1="2" x2="7" y2="7"/><line x1="12" y1="2" x2="12" y2="7"/><line x1="17" y1="2" x2="17" y2="7"/></svg>' +
       '<div class="orig-placeholder-label">Coming soon</div>' +
       '<div class="orig-placeholder-sub">A new project is in the works</div>' +
@@ -284,7 +282,7 @@ function _loadContent() {
   fetch('content.json?v=' + Date.now())
     .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(_renderContent)
-    .catch(function(e) { console.warn('BCS: content.json load failed', e); });
+    .catch(function() {});
 }
 
 /* ── Scroll reveal ──────────────────────────────────────────── */
@@ -350,13 +348,44 @@ function _initReveal() {
   });
   strip.addEventListener('click', function(e) {
     if (moved) { moved = false; return; }
-    if (e.target.closest('.work-card')) window.location.href = 'services.html';
+    if (e.target.closest('.admin-delete-btn, .admin-edit-btn, .admin-drag-handle, .admin-img-btn, [data-edit-path]')) return;
+    var card = e.target.closest('.work-card');
+    if (card) {
+      var url = card.getAttribute('data-url');
+      if (url) window.open(url, '_blank', 'noopener');
+    }
   });
   strip.addEventListener('touchstart', function() { moved = false; }, { passive: true });
   strip.addEventListener('touchmove', function() { moved = true; }, { passive: true });
   strip.addEventListener('touchend', function(e) {
     if (moved) return;
-    if (e.target.closest('.work-card')) window.location.href = 'services.html';
+    var card = e.target.closest('.work-card');
+    if (card) {
+      var url = card.getAttribute('data-url');
+      if (url) window.open(url, '_blank', 'noopener');
+    }
+  });
+}();
+
+/* ── Work gallery card click (work-gallery.html) ────────────── */
+!function() {
+  var grid = document.querySelector('[data-section="work-gallery"]');
+  if (!grid) return;
+  grid.addEventListener('click', function(e) {
+    if (e.target.closest('.admin-delete-btn, .admin-edit-btn, .admin-drag-handle, .admin-img-btn, [data-edit-path]')) return;
+    var card = e.target.closest('.work-card[data-url]');
+    if (card) window.open(card.getAttribute('data-url'), '_blank', 'noopener');
+  });
+}();
+
+/* ── Originals card click (index + originals-gallery) ────────── */
+!function() {
+  document.querySelectorAll('[data-section="originals"]').forEach(function(grid) {
+    grid.addEventListener('click', function(e) {
+      if (e.target.closest('.admin-delete-btn, .admin-edit-btn, .admin-drag-handle, .admin-img-btn, [data-edit-path]')) return;
+      var card = e.target.closest('.orig-card[data-url]');
+      if (card) window.open(card.getAttribute('data-url'), '_blank', 'noopener');
+    });
   });
 }();
 
@@ -366,10 +395,11 @@ _initReveal();
 /* ── Load admin layer if in edit mode ───────────────────────── */
 if (window.location.search.indexOf('edit') > -1) {
   var _ac = document.createElement('link');
-  _ac.rel = 'stylesheet'; _ac.href = 'admin.css';
+  var _cv = '?v=' + Date.now();
+  _ac.rel = 'stylesheet'; _ac.href = 'admin.css' + _cv;
   document.head.appendChild(_ac);
   var _as = document.createElement('script');
-  _as.src = 'admin.js';
+  _as.src = 'admin.js' + _cv;
   document.head.appendChild(_as);
 }
 
