@@ -48,7 +48,8 @@
         "tag": "Documentary",
         "image": "thumb2.jpg",
         "imagePosition": "center center",
-        "num": "02"
+        "num": "02",
+        "watchUrl": "https://youtube.com/shorts/ICbyJtfG1K8"
       },
       {
         "client": "Monkey Paw Resort, Munnar",
@@ -57,7 +58,8 @@
         "tag": "Resort & Travel",
         "image": "thumb3.jpg",
         "imagePosition": "center 45%",
-        "num": "03"
+        "num": "03",
+        "watchUrl": "https://youtube.com/shorts/cpnyfmEkOy4"
       },
       {
         "client": "Mudbrew Café",
@@ -66,7 +68,8 @@
         "tag": "Campaign",
         "image": "thumb1.png",
         "imagePosition": "center 40%",
-        "num": "01"
+        "num": "01",
+        "watchUrl": "https://youtube.com/shorts/q-7ksZK6U8M"
       },
       {
         "client": "Nirmala College",
@@ -75,7 +78,8 @@
         "tag": "Institutional",
         "image": "thumb4.jpg",
         "imagePosition": "center 25%",
-        "num": "04"
+        "num": "04",
+        "watchUrl": "https://youtube.com/shorts/cvxF-9diTFY"
       },
       {
         "client": "ABCD",
@@ -84,7 +88,8 @@
         "tag": "dasnks",
         "imagePosition": "center center",
         "num": "05",
-        "image": "work-abcd-20260911.png"
+        "image": "work-abcd-20260911.jpg",
+        "watchUrl": "https://www.youtube.com/shorts/cvxF-9diTFY"
       }
     ]
   },
