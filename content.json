@@ -76,15 +76,6 @@
         "image": "thumb4.jpg",
         "imagePosition": "center 25%",
         "num": "04"
-      },
-      {
-        "client": "ABCD",
-        "title": "adada",
-        "desc": "dand dlna dladna a",
-        "tag": "dadad ",
-        "imagePosition": "center center",
-        "num": "05",
-        "image": "work-abcd-20260911.jpg"
       }
     ]
   },
@@ -180,6 +171,16 @@
         ],
         "instagram": "https://www.instagram.com/dop_vargezz?igsh=Z2UwdnFrcGo4ODI1",
         "email": "vg@brandconvey.in"
+      },
+      {
+        "name": "Anoop",
+        "role": "TEST",
+        "bio": "lfsnf lanf alfna fa.s adad a dald ad dkadkad. ",
+        "email": "a@a.com",
+        "initials": "A",
+        "instagram": "",
+        "creds": [],
+        "photo": "team-anoop-20260911.jpg"
       }
     ]
   },
