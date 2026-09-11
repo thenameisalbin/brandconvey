@@ -42,15 +42,6 @@
   "work": {
     "cards": [
       {
-        "client": "Mudbrew Café",
-        "title": "\"Be a Child Again\" Campaign",
-        "desc": "A nostalgia-driven brand reel and content series for a Kochi café known for pottery and games.",
-        "tag": "Campaign",
-        "image": "thumb1.png",
-        "imagePosition": "center 40%",
-        "num": "01"
-      },
-      {
         "client": "Nirmala Medical Centre",
         "title": "Institutional Documentary",
         "desc": "A longer-form documentary covering the medical centre's story and facilities.",
@@ -67,6 +58,15 @@
         "image": "thumb3.jpg",
         "imagePosition": "center 45%",
         "num": "03"
+      },
+      {
+        "client": "Mudbrew Café",
+        "title": "\"Be a Child Again\" Campaign",
+        "desc": "A nostalgia-driven brand reel and content series for a Kochi café known for pottery and games.",
+        "tag": "Campaign",
+        "image": "thumb1.png",
+        "imagePosition": "center 40%",
+        "num": "01"
       },
       {
         "client": "Nirmala College",
