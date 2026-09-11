@@ -96,12 +96,6 @@
   "originals": {
     "films": [
       {
-        "client": "AJMI FOODS",
-        "title": "Puttu X Payasam",
-        "image": "thumb1.png",
-        "watchUrl": "#"
-      },
-      {
         "client": "MILMA",
         "title": "Milma",
         "image": "thumb2.jpg",
@@ -112,6 +106,12 @@
         "title": "babd aidna",
         "watchUrl": "https://www.youtube.com/shorts/cvxF-9diTFY",
         "image": "orig-abcd-20260911.jpg"
+      },
+      {
+        "client": "AJMI FOODS",
+        "title": "Puttu X Payasam",
+        "image": "thumb1.png",
+        "watchUrl": "#"
       }
     ]
   },
