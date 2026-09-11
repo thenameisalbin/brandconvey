@@ -43,7 +43,7 @@
     "cards": [
       {
         "client": "Nirmala Medical Centre",
-        "title": "Institutional Documentary.",
+        "title": "Institutional Documentary",
         "desc": "A longer-form documentary covering the medical centre's story and facilities.",
         "tag": "Documentary",
         "image": "thumb2.jpg",
@@ -175,6 +175,16 @@
         ],
         "instagram": "https://www.instagram.com/dop_vargezz?igsh=Z2UwdnFrcGo4ODI1",
         "email": "vg@brandconvey.in"
+      },
+      {
+        "name": "A",
+        "role": "A",
+        "bio": "aaa",
+        "email": "aaa",
+        "initials": "A",
+        "instagram": "",
+        "creds": [],
+        "photo": "team-a-20260911.jpg"
       }
     ]
   },
