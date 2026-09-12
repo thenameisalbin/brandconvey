@@ -270,6 +270,40 @@ function _renderContent(data) {
   var cs = document.querySelector('[data-section="contact-sidebar"]');
   if (cs) cs.innerHTML = _buildContactCards(data.contact);
 
+  /* Page heroes, section heads, CTAs ------------------------- */
+  var _p = data.pages || {};
+  function _hero(key) {
+    var pg = _p[key]; if (!pg) return;
+    var el = document.querySelector('[data-section="page-hero-' + key + '"]');
+    if (!el) return;
+    el.innerHTML =
+      '<div class="eyebrow" data-edit-path="pages.' + key + '.heroEyebrow">' + _esc(pg.heroEyebrow) + '</div>' +
+      '<h1 data-edit-path="pages.' + key + '.heroH1">' + _esc(pg.heroH1) + '</h1>' +
+      '<p data-edit-path="pages.' + key + '.heroSub">' + _esc(pg.heroSub) + '</p>';
+  }
+  function _shead(section, pathKey, eyebrowKey, h2Key, subKey) {
+    var pg = _p[pathKey]; if (!pg) return;
+    var el = document.querySelector('[data-section="section-head-' + section + '"]');
+    if (!el) return;
+    el.innerHTML =
+      '<div class="section-eyebrow" data-edit-path="pages.' + pathKey + '.' + eyebrowKey + '">' + _esc(pg[eyebrowKey]) + '</div>' +
+      '<h2 data-edit-path="pages.' + pathKey + '.' + h2Key + '">' + _esc(pg[h2Key]) + '</h2>' +
+      '<p data-edit-path="pages.' + pathKey + '.' + subKey + '">' + _esc(pg[subKey]) + '</p>';
+  }
+  function _cta(key) {
+    var pg = _p[key]; if (!pg || !pg.ctaH2) return;
+    var el = document.querySelector('[data-section="cta-' + key + '"]');
+    if (!el) return;
+    el.innerHTML =
+      '<h2 class="reveal" data-edit-path="pages.' + key + '.ctaH2">' + _esc(pg.ctaH2) + '</h2>' +
+      '<p class="reveal d1" data-edit-path="pages.' + key + '.ctaSub">' + _esc(pg.ctaSub) + '</p>';
+  }
+  _hero('services'); _hero('about'); _hero('contact'); _hero('work'); _hero('originals');
+  _shead('svc',     'services', 'svcEyebrow',     'svcH2',     'svcSub');
+  _shead('process', 'services', 'processEyebrow', 'processH2', 'processSub');
+  _shead('team',    'about',    'teamEyebrow',     'teamH2',    'teamSub');
+  _cta('services'); _cta('about'); _cta('work'); _cta('originals');
+
   /* Re-run scroll reveal on newly created .reveal elements ---- */
   _initReveal();
 
