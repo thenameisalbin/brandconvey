@@ -42,16 +42,6 @@
   "work": {
     "cards": [
       {
-        "client": "Mudbrew Café",
-        "title": "\"Be a Child Again\" Campaign",
-        "desc": "A nostalgia-driven brand reel and content series for a Kochi café known for pottery and games.",
-        "tag": "Campaign",
-        "image": "thumb1.png",
-        "imagePosition": "center 40%",
-        "num": "01",
-        "watchUrl": "https://youtube.com/shorts/q-7ksZK6U8M"
-      },
-      {
         "client": "Nirmala Medical Centre",
         "title": "Institutional Documentary",
         "desc": "A longer-form documentary covering the medical centre's story and facilities.",
@@ -72,6 +62,16 @@
         "watchUrl": "https://youtube.com/shorts/cpnyfmEkOy4"
       },
       {
+        "client": "Mudbrew Café",
+        "title": "\"Be a Child Again\" Campaign",
+        "desc": "A nostalgia-driven brand reel and content series for a Kochi café known for pottery and games.",
+        "tag": "Campaign",
+        "image": "thumb1.png",
+        "imagePosition": "center 40%",
+        "num": "01",
+        "watchUrl": "https://youtube.com/shorts/q-7ksZK6U8M"
+      },
+      {
         "client": "Nirmala College",
         "title": "Welcome Film — Dept. of Physics",
         "desc": "A short welcome ad introducing incoming students to the physics department.",
@@ -86,22 +86,16 @@
   "originals": {
     "films": [
       {
-        "client": "Nestle Munch ",
-        "title": "Just One Bite Away ",
-        "watchUrl": "https://youtube.com/shorts/RBqLyduc7xM",
-        "image": "orig-nestle-munch-20260911.jpg"
-      },
-      {
         "client": "MILMA",
-        "title": "നാടിന്റെ നന്മ, തലമുറകളുടെ മിൽമ",
-        "image": "orig-milma-20260911.jpg",
-        "watchUrl": "https://youtube.com/shorts/giu7maKRqDQ"
+        "title": "Milma",
+        "image": "thumb2.jpg",
+        "watchUrl": "#"
       },
       {
         "client": "AJMI FOODS",
         "title": "Puttu X Payasam",
-        "image": "orig-ajmi-foods-20260911.jpg",
-        "watchUrl": "https://youtube.com/shorts/1kifUm0MNXY"
+        "image": "thumb1.png",
+        "watchUrl": "#"
       }
     ]
   },
@@ -199,5 +193,49 @@
       }
     ],
     "address": "Kuppathadathil Building,\nPancode, Puthencruz\nErnakulam — 682308"
+  },
+  "pages": {
+    "services": {
+      "heroEyebrow": "Creative Production · Kochi, Kerala",
+      "heroH1": "What we make.",
+      "heroSub": "Video ads, brand films, campaigns and documentary content — built from brief to final cut under one roof.",
+      "svcEyebrow": "What We Do",
+      "svcH2": "Services",
+      "svcSub": "Video ads and creative campaigns for Kerala businesses — from first concept to the final cut.",
+      "processEyebrow": "How It Works",
+      "processH2": "From brief to final cut.",
+      "processSub": "Every project follows the same careful arc — no surprises, no handoffs, just good work.",
+      "ctaH2": "Ready to make something worth watching?",
+      "ctaSub": "Drop us a message and let's talk about your project."
+    },
+    "about": {
+      "heroEyebrow": "Who's Behind It",
+      "heroH1": "Two founders. One shared obsession",
+      "heroSub": "A creative director and a cinematographer who lead every project together — from the first call to the final file.",
+      "teamEyebrow": "Who's Behind It",
+      "teamH2": "Leadership",
+      "teamSub": "A two-person creative and production team who lead every project from first call to final file.",
+      "ctaH2": "Got a brand worth telling a story about?",
+      "ctaSub": "We're based in Kochi and work with businesses across Kerala and India."
+    },
+    "contact": {
+      "heroEyebrow": "Get In Touch",
+      "heroH1": "Let's talk about your project.",
+      "heroSub": "Drop us a message and we'll get back to you within one business day."
+    },
+    "work": {
+      "heroEyebrow": "Work Gallery · BrandConvey Studios",
+      "heroH1": "Our Work.",
+      "heroSub": "Every project we've shot — brand films, campaigns, documentaries, and more.",
+      "ctaH2": "Ready to make something worth watching?",
+      "ctaSub": "Drop us a message and let's talk about your project."
+    },
+    "originals": {
+      "heroEyebrow": "Originals Gallery · BrandConvey Studios",
+      "heroH1": "BrandConvey Originals.",
+      "heroSub": "Stories made in-house, for the record — original films produced under our own creative direction.",
+      "ctaH2": "Got a brand worth telling a story about?",
+      "ctaSub": "We're based in Kochi and work with businesses across Kerala and India."
+    }
   }
 }
