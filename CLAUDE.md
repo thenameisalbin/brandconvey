@@ -3,6 +3,7 @@
 ## Git Workflow
 
 - Always pull from remote before making local changes (`git pull --rebase origin v2`)
+- **Remote CMS content always wins**: if `content.json` has conflicts during rebase, always accept the remote (incoming) version — it represents the latest admin-published content and has higher precedence than any local edits to that file. Use `git checkout --theirs content.json && git add content.json` to resolve.
 
 ## Code Style
 
