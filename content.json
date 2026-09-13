@@ -86,16 +86,22 @@
   "originals": {
     "films": [
       {
+        "client": "Nestle Munch",
+        "title": "Just One Bite Away",
+        "watchUrl": "https://youtube.com/shorts/RBqLyduc7xM",
+        "image": "orig-nestle-munch-20260911.jpg"
+      },
+      {
         "client": "MILMA",
-        "title": "Milma",
-        "image": "thumb2.jpg",
-        "watchUrl": "#"
+        "title": "നാടിന്റെ നന്മ, തലമുറകളുടെ മിൽമ",
+        "image": "orig-milma-20260911.jpg",
+        "watchUrl": "https://youtube.com/shorts/giu7maKRqDQ"
       },
       {
         "client": "AJMI FOODS",
         "title": "Puttu X Payasam",
-        "image": "thumb1.png",
-        "watchUrl": "#"
+        "image": "orig-ajmi-foods-20260911.jpg",
+        "watchUrl": "https://youtube.com/shorts/1kifUm0MNXY"
       }
     ]
   },
