@@ -4,6 +4,7 @@
 
 - Always pull from remote before making local changes (`git pull --rebase origin v2`)
 - **Remote CMS content always wins**: if `content.json` has conflicts during rebase, always accept the remote (incoming) version — it represents the latest admin-published content and has higher precedence than any local edits to that file. Use `git checkout --theirs content.json && git add content.json` to resolve.
+- **Inspect CMS commits before accepting**: when a rebase brings in an "Update site content via admin CMS" commit, check that array counts didn't shrink unexpectedly — run `git show <hash>:content.json | python3 -c "import sys,json; d=json.load(sys.stdin); print('originals:', len(d.get('originals',{}).get('films',[])), 'work:', len(d.get('work',{}).get('cards',[])))"`. If an array shrank and the reason isn't clear, flag it to the user before continuing — deleted items can be recovered from git history with `git show <older-hash>:content.json`.
 
 ## Code Style
 

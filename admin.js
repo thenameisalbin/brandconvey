@@ -1108,13 +1108,47 @@ function _publish(pat, btn, statusEl) {
       });
   }
 
-  /* Use cached SHA from last publish if available; otherwise GET it */
-  var start = _publishedSha
-    ? attempt(_publishedSha, null)
-    : fetchMeta().then(function(m) { return attempt(m.sha, m.content); });
+  /* Always GET fresh remote state so we can detect divergence before overwriting */
+  var start = fetchMeta().then(function(m) {
+    /* Divergence guard — warn if remote has MORE array items than local session */
+    var warnings = [];
+    if (m.content) {
+      try {
+        var remote = JSON.parse(decodeURIComponent(escape(atob(m.content.replace(/\n/g, '')))));
+        var local  = window._contentData;
+        var checks = [
+          { label: 'Work cards',    r: ((remote.work    || {}).cards   || []).length, l: ((local.work    || {}).cards   || []).length },
+          { label: 'Originals',     r: ((remote.originals || {}).films  || []).length, l: ((local.originals || {}).films  || []).length },
+          { label: 'Services',      r: ((remote.services || {}).items  || []).length, l: ((local.services || {}).items  || []).length },
+          { label: 'Team members',  r: ((remote.team    || {}).members || []).length, l: ((local.team    || {}).members || []).length },
+          { label: 'Process steps', r: ((remote.process || {}).steps   || []).length, l: ((local.process || {}).steps   || []).length },
+        ];
+        checks.forEach(function(c) {
+          if (c.r > c.l) warnings.push('  • ' + c.label + ': remote has ' + c.r + ', your session has ' + c.l);
+        });
+      } catch(e) {}
+    }
+    if (warnings.length) {
+      var proceed = window.confirm(
+        '⚠️ Remote content has more items than your current session:\n\n' +
+        warnings.join('\n') +
+        '\n\nThis usually means you\'re working from a stale tab.\n' +
+        'Publishing now will DELETE those extra remote items.\n\n' +
+        'Cancel → close this tab, reopen the page fresh, then edit.\n' +
+        'OK → overwrite anyway (only if you intentionally removed them).'
+      );
+      if (!proceed) {
+        btn.textContent = 'Publish'; btn.disabled = false;
+        statusEl.textContent = 'Publish cancelled'; statusEl.className = 'ab-conn';
+        return Promise.resolve(null);
+      }
+    }
+    return attempt(m.sha, m.content);
+  });
 
   start
-    .then(function() {
+    .then(function(result) {
+      if (!result) return; /* cancelled by divergence guard */
       btn.textContent = 'Published ✓'; btn.disabled = false; btn.classList.remove('has-changes');
       statusEl.textContent = 'Published'; statusEl.className = 'ab-conn ok';
       document.getElementById('adminUnsaved').style.display = 'none';
