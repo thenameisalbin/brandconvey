@@ -1,5 +1,9 @@
 # BrandConvey Studios — Project Instructions
 
+## Git Workflow
+
+- Always pull from remote before making local changes (`git pull --rebase origin v2`)
+
 ## Code Style
 
 - Always write **mobile-first** CSS: start with the smallest viewport as the base, then layer `min-width` media queries for larger breakpoints

@@ -310,6 +310,10 @@ nav{
 
 /* ── WORK SECTION ────────────────────────────────────────── */
 .work-section{background:var(--bg-alt)}
+.work-section .section-head h2{
+  font-family:'Cormorant Garamond','Space Grotesk',serif;
+  font-size:clamp(42px,5.5vw,72px);font-style:italic;font-weight:600;letter-spacing:-.01em;
+}
 .filmstrip{
   display:flex;gap:18px;overflow-x:auto;padding-bottom:16px;
   scroll-snap-type:x mandatory;cursor:grab;
@@ -518,7 +522,11 @@ nav{
 /* ── ORIGINALS ───────────────────────────────────────────── */
 .originals-section{background:var(--bg)}
 .originals-section .section-head{max-width:100%}
-.originals-section .section-head h2{color:var(--cream)}
+.originals-section .section-head h2{
+  color:var(--cream);
+  font-family:'Cormorant Garamond','Space Grotesk',serif;
+  font-size:clamp(42px,5.5vw,72px);font-style:italic;font-weight:600;letter-spacing:-.01em;
+}
 .originals-section .section-head p{color:var(--muted)}
 .originals-section .section-eyebrow{color:var(--gold)}
 .originals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
